@@ -1,4 +1,4 @@
-package org.sid.cinema.dao;
+package org.sid.cinema.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,7 +15,8 @@ public class Ticket {
     @Column(length = 30)
     private String nomClient;
     private double prix;
-    private int codePayement;
+    @Column(unique = true,nullable = true)
+    private Integer codePayement;
     private boolean reserve;
     @ManyToOne
     private Place place;

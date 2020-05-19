@@ -1,4 +1,4 @@
-package org.sid.cinema.dao;
+package org.sid.cinema.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,22 +7,19 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Collection;
-
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-public class Ville {
+@Data @AllArgsConstructor @NoArgsConstructor @ToString
+public class Place {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(length = 30)
-    private String name;
+    private int numero;
     private double longitude;
     private double latitude;
     private double altitude;
-    @OneToMany(mappedBy = "ville")
-    private Collection<Cinema> cinemas;
+    @ManyToOne
+    private Salle salle;
+    @OneToMany(mappedBy = "place")
+    private Collection<Ticket> tickets;
 
 }
