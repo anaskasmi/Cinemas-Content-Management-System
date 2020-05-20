@@ -1,5 +1,6 @@
 package org.sid.cinema.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ public class Place {
     private double altitude;
     @ManyToOne
     private Salle salle;
+    @JsonProperty(access= JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "place")
     private Collection<Ticket> tickets;
 

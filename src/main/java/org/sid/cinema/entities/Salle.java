@@ -1,5 +1,6 @@
 package org.sid.cinema.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,10 +22,13 @@ public class Salle implements Serializable {
     @Column(length = 30)
     private String name;
     private int nombrePlace;
+    @JsonProperty(access= JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     private Cinema cinema;
+    @JsonProperty(access= JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "salle")
     private Collection<Place> places;
+    @JsonProperty(access= JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "salle")
     private Collection<Projection> projections;
 
